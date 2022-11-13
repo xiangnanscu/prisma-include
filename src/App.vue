@@ -16,7 +16,7 @@ const npmUrl = `https://www.npmjs.com/package/${packages.name}`
 
 <template>
   <h1><a :href="githubRepoUrl">{{ packages.name }}</a>-<a :href="npmUrl">{{packages.version}}</a></h1>
-  <MainPage msg="Validator" />
+  <MainPage msg="prisma-include" />
 </template>
 
 <style>

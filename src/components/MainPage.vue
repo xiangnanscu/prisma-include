@@ -1,21 +1,33 @@
 <script setup>
-import { ref } from 'vue'
-import Validator from '../validator.mjs'
+import { ref, computed } from 'vue'
+import { prismaInclude } from '../prisma-include.mjs'
 
 defineProps({
   msg: String
 })
+const source = `
+model base {
+  id    Int       @id @default(autoincrement())
+  ctime DateTime? @default(now()) @db.Timestamptz(0)
 
-const inputValue = ref('511523199901010011')
-const errorMsg = ref('')
-function validate() {
-  try {
-    Validator.sfzh(inputValue.value)
-    errorMsg.value = "test passed"
-  } catch (error) {
-    errorMsg.value = error.message
-  }
+  @@index([dwmc])
 }
+
+model user {
+  ///@include(base)
+  name String? @unique @default("") @db.VarChar(10)
+}
+
+`
+const inputValue = ref(source)
+const errorMsg = ref('')
+const includeSource = computed(() => {
+  try {
+    return prismaInclude(inputValue.value)
+  } catch (error) {
+    return "parse error:" + error.message
+  }
+})
 function onInput(event) {
   inputValue.value = event.target.value
 }
@@ -23,8 +35,7 @@ function onInput(event) {
 
 <template>
   <input :value="inputValue" @input="onInput" />
-  <button type="button" @click="validate">validate</button>
-  <span v-if="errorMsg">{{ errorMsg }}</span>
+  <div>{{ includeSource }}</div>
 </template>
 
 <style scoped>

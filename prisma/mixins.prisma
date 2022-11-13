@@ -1,0 +1,14 @@
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model base {
+  id    Int       @id @default(autoincrement())
+  ctime DateTime? @default(now()) @db.Timestamptz(0)
+}
+
+model user {
+  ///@include(base)
+  name String @unique @default("") @db.VarChar(10)
+}

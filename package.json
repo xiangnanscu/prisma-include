@@ -1,8 +1,11 @@
 {
-  "name": "@xiangnanscu/validator",
-  "version": "0.2.0",
-  "description": "validator",
-  "main": "src/validator.mjs",
+  "name": "@xiangnanscu/prisma-include",
+  "version": "0.1.0",
+  "description": "a prisma file preprocessor that mixins fields by @import and @include comments",
+  "main": "src/prisma-include.mjs",
+  "bin":{
+    "prisma-include": "./bin/prisma-include-cli.mjs"
+  },
   "scripts": {
     "dev": "vite",
     "build": "vite build",
@@ -10,22 +13,25 @@
     "prerelease": "npm --no-git-tag-version version minor",
     "release": "push_option=release npm run push",
     "push": "git add . && git commit -am \"${msg:-push}\" && git push --push-option=${push_option:-nothing}",
-    "replace": "find .  -type d \\( -name .git -o -name node_modules \\) -prune -o  -type f  -exec  sed -i s/validator/field/g {} \\;",
-    "test": "node test.mjs"
+    "replace": "find .  -type d \\( -name .git -o -name node_modules \\) -prune -o  -type f  -exec  sed -i s/prisma-include/prisma-include/g {} \\;",
+    "test": "node bin/prisma-include-cli.mjs prisma/schema.prisma"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/xiangnanscu/validator.git"
+    "url": "git+https://github.com/xiangnanscu/prisma-include.git"
   },
   "author": "Nan Xiang",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/xiangnanscu/validator/issues"
+    "url": "https://github.com/xiangnanscu/prisma-include/issues"
   },
-  "homepage": "https://github.com/xiangnanscu/validator#readme",
+  "homepage": "https://github.com/xiangnanscu/prisma-include#readme",
   "devDependencies": {
-    "vue": "^3.2.25",
     "@vitejs/plugin-vue": "^2.3.3",
-    "vite": "^2.9.9"
+    "vite": "^2.9.9",
+    "vue": "^3.2.25"
+  },
+  "dependencies": {
+    "@mrleebo/prisma-ast": "^0.4.1"
   }
 }
