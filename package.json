@@ -1,6 +1,6 @@
 {
   "name": "@xiangnanscu/prisma-include",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "a prisma file preprocessor that mixins fields by @import and @include comments",
   "main": "src/prisma-include.mjs",
   "bin":{
@@ -13,7 +13,7 @@
     "prerelease": "npm --no-git-tag-version version minor",
     "release": "push_option=release npm run push",
     "push": "git add . && git commit -am \"${msg:-push}\" && git push --push-option=${push_option:-nothing}",
-    "replace": "find .  -type d \\( -name .git -o -name node_modules \\) -prune -o  -type f  -exec  sed -i s/prisma-include/prisma-include/g {} \\;",
+    "prisma": "node bin/prisma-include-cli.mjs prisma/schema.include.prisma > prisma/schema.prisma",
     "test": "node bin/prisma-include-cli.mjs prisma/schema.prisma"
   },
   "repository": {
