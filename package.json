@@ -1,0 +1,31 @@
+{
+  "name": "@xiangnanscu/validator",
+  "version": "0.2.0",
+  "description": "validator",
+  "main": "src/validator.mjs",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "prerelease": "npm --no-git-tag-version version minor",
+    "release": "push_option=release npm run push",
+    "push": "git add . && git commit -am \"${msg:-push}\" && git push --push-option=${push_option:-nothing}",
+    "replace": "find .  -type d \\( -name .git -o -name node_modules \\) -prune -o  -type f  -exec  sed -i s/validator/field/g {} \\;",
+    "test": "node test.mjs"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/xiangnanscu/validator.git"
+  },
+  "author": "Nan Xiang",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/xiangnanscu/validator/issues"
+  },
+  "homepage": "https://github.com/xiangnanscu/validator#readme",
+  "devDependencies": {
+    "vue": "^3.2.25",
+    "@vitejs/plugin-vue": "^2.3.3",
+    "vite": "^2.9.9"
+  }
+}

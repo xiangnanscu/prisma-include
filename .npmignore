@@ -1,0 +1,13 @@
+public
+logs
+node_modules
+public
+tmp
+.vscode
+.github
+.npmrc
+index.html
+vite.config.js
+yarn.lock
+src/*
+!src/validator.mjs
