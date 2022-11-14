@@ -4,11 +4,18 @@ datasource db {
 }
 
 model base {
+  ///@abstract
   id    Int       @id @default(autoincrement())
   ctime DateTime? @default(now()) @db.Timestamptz(0)
+  @@index(ctime)
 }
 
 model user {
   ///@include(base)
-  name String @unique @default("") @db.VarChar(10)
+  name String @unique @default("1") @db.VarChar(10)
+}
+
+model user2 {
+  ///@include(user)
+  name2 String @unique @default("2") @db.VarChar(20)
 }

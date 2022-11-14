@@ -6,6 +6,9 @@ tmp
 .vscode
 .github
 .npmrc
+.nvmrc
+prisma
+test.mjs
 index.html
 vite.config.js
 yarn.lock

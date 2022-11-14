@@ -1,4 +1,4 @@
-///@import {user} from "prisma/mixins.prisma"
+///@import {user, user2, base} from "prisma/mixins.prisma"
 
 generator client {
   provider = "prisma-client-js"
@@ -12,4 +12,14 @@ datasource db {
 model profile {
   ///@include(user)
   email String @unique @default("") @db.VarChar(100)
+}
+
+model profile2 {
+  ///@include(profile)
+  email2 String @unique @default("2") @db.VarChar(200)
+}
+
+model profile3 {
+  ///@include(base)
+  email3 String @unique @default("3") @db.VarChar(300)
 }

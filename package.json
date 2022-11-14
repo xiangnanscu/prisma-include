@@ -1,6 +1,6 @@
 {
   "name": "@xiangnanscu/prisma-include",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "description": "a prisma file preprocessor that mixins fields by @import and @include comments",
   "main": "src/prisma-include.mjs",
   "bin":{
